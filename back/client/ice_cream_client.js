@@ -1,10 +1,10 @@
-const grpc = require('grpc');
+const grpc = require('@grpc/grpc-js');
 const messages = require('./ice_cream_pb');
 const services = require('./ice_cream_grpc_pb');
 
 function main() {
   const client = new services.IceCreamClient(
-    'localhost:50051', grpc.credentials.createInsecure()
+    'localhost:9090', grpc.credentials.createInsecure()
   );
 
   const iceCreamRequest = new messages.IceCreamRequest();
@@ -16,6 +16,7 @@ function main() {
       console.log('this thing broke!', err);
     } else {
       console.log('response from python:', response.getMessage());
+      return response.getMessage()
     }
   })
 }

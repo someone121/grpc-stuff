@@ -1,7 +1,7 @@
 // GENERATED CODE -- DO NOT EDIT!
 
 'use strict';
-var grpc = require('grpc');
+var grpc = require('@grpc/grpc-js');
 var ice_cream_pb = require('./ice_cream_pb.js');
 
 function serialize_IceCreamRequest(arg) {
