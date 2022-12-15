@@ -1,6 +1,0 @@
-grpc_tools_node_protoc -I. src/proto/ice_cream.proto \
- --js_out=import_style=commonjs:./src/proto \
- --grpc_out=grpc_js:./src/proto -> working, wanted result(server)
-
-protoc -I. src/proto/ice_cream.proto --js_out=import_style=commonjs:. \
---grpc-web_out=import_style=commonjs,mode=grpcwebtext:. ->(working for web)
