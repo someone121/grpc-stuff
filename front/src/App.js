@@ -14,15 +14,13 @@ joinHandler = () => {
     iceCreamRequest.setScoops(3)
     iceCreamRequest.setFlavor('strawberry')
 
-    client.orderIceCream(iceCreamRequest, function (err, response) {
-      console.log('hi');
-      if (err) {
-        console.log('this thing broke!', err);
-      } else {
-        console.log('response from me:', response.getMessage());
-        return response.getMessage()
+    client.orderIceCream(iceCreamRequest, {}, (err, Res) => {
+      if (Res == null) {
+        console.log(err)
+      }else {
+        console.log(Res.array[0])
       }
-    })
+    });
   }
   
 
