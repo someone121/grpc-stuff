@@ -1,0 +1,32 @@
+if you want to start a project in grpc well, i hope this "guide" might help...
+because the internet is not a friend in this.
+
+1. First, let's define a gRPC service using protocol buffers,
+Here we define a request messages, a response messages, and a service with RPC methods
+
+example is in the proto folder (also ypu need to make sure the server and client have the same proto)
+
+2. Now we will have to compile the .proto file using proto compile
+(lines to write in the proto folder)
+this is done so we can access the message types, services and call the methods using your prefered language. Each language has its own proto compiler.
+here i used python and js-web
+
+3. then we write the server, This file will contain the gRPC server code.
+you need to there the files you compiled in the previos step
+
+4. create an envoy.yaml in the root of this React.js folder. This is Envoy's config file that Docker will use to set up an Envoy process running.
+This sets the URL address of the gRPC server where the Envoy proxy will direct its HTTP/2 calls.
+and create a Dockerfile in the same place as envoy.yaml
+
+5. after that you can write your client and presentesional page
+
+-------------------------------------------------------------------------------------
+
+to run this code:
+- server:
+    py greet_server.py
+- client:
+    npm start
+- docker:
+    docker build -t greet_service .
+    docker run -p 8080:8080 -p 9901:9901 greet_service
