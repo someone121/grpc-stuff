@@ -1,5 +1,6 @@
+פקודות בטרמינל כדי להשמיש את הקובץ פרוטו
+---------------------------------------------------------------
 המלצת הכותב תעברו לתיקייה של הפרוטו לפני שמביאים את השורות
-
 grpc_tools_node_protoc -I. .proto \
  --js_out=import_style=commonjs:<path to folder where you want to generate> \
  --grpc_out=grpc_js:<path to folder where you want to generate>
@@ -15,3 +16,29 @@ py -m grpc_tools.protoc -I.\
  --grpc_python_out=<path to folder where you want to generate>\
   .proto 
   -> for python grpc
+---------------------------------------------------------------
+
+
+  התקנות שכדאי לעשות (לפחות בשרת פייתון ולקוח בריאקט)
+---------------------------------------------------------------
+  בפייתון:
+  py -m pip install google-pasta grpcio grpcio-tools
+
+  בריאקט:
+  npm i @grpc/grpc-js grpc-web google-protobuf @grpc/proto-loader
+---------------------------------------------------------------
+
+docker
+---------------------------------------------------------------
+יש צורך להריץ דוקר כדי שזה יעבוד,
+תכלס לכתוב דברים מחדש לא צריך כי יש פה אבל מומלץ לחקור למה מה שכתבתי ככה.
+לפחות לפרויקט הזה הנה השורות לבנייה ולהרצה
+
+ docker build -t greet_service .
+ docker run -p 8080:8080 -p 9901:9901 grpc-proj
+
+יש לעשות את זה בתקייה איפה שיש קובץ יאמל, ודוקר
+---------------------------------------------------------------
+
+ 
+
